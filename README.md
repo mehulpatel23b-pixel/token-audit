@@ -57,6 +57,18 @@ Rate search : 30/30
 - A core rate limit of 60/hr (token not actually authenticating)
 - Missing `workflow` scope when `repo` is present
 
+## Sharing access with viewers (read this!)
+
+**Never put a real token in a repo, README, or issue.** Anyone who sees it can act
+as you, and GitHub auto-revokes leaked tokens. If you want people to *use* a tool:
+
+- Public-data tools (like [repo-radar](https://github.com/mehulpatel23b-pixel/repo-radar))
+  run fine with **no token at all** — GitHub's public API just rate-limits harder.
+- Each viewer should create their **own** free token at github.com → Settings →
+  Developer settings → Personal access tokens, and keep it in their environment.
+- For real shared apps, use a backend that holds the token server-side and exposes
+  only results — never ship the key to the browser or the repo.
+
 ## Security
 
 - The token is **never printed, logged, or sent anywhere except api.github.com**
